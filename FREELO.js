@@ -85,7 +85,7 @@ catch{
         else if(eloGained > 0 && eloGained < 30 ){
             const printWin = new Discord.MessageEmbed()
             .setColor('#0099ff')
-            .setTitle(`Rating Slightly Increased (+ ${newEloGained})`)
+            .setTitle(`Rating Increased (+ ${newEloGained})`)
             .setAuthor(userName, 'https://yt3.ggpht.com/ytc/AAUvwnh5cX3Hpigfm2Y3X1VAd1QrVBWgzFeaIM8RAuTu=s900-c-k-c0x00ffffff-no-rj')
             .setDescription(`New Elo: ${newElo}`)
             .setThumbnail('https://lh4.googleusercontent.com/proxy/VsUgVFTfy9YgW9XckkSqGvTDJ49tqZtOMmRK__g08BR95WJWbwqGnhx12I1TiJBGeNDgEKT9jzyqlfntUHruk4Ua29zwtvNuyT72CuM16g=s0-d')
