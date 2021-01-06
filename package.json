@@ -10,9 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@keyv/postgres": "^1.0.16",
+    "@keyv/sql": "^1.1.2",
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
-    "keyv": "^4.0.3"
+    "keyv": "^4.0.3",
+    "pg": "^8.5.1"
   }
 }
