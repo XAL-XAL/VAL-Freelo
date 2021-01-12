@@ -10,10 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@keyv/sql": "^1.1.2",
+    "@keyv/sql": "github:jtsshieh/keyv-sql",
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
-    "keyv": "^4.0.3",
+    "keyv": "github:jtsshieh/keyv",
+    "nodemon": "^2.0.7",
     "pg": "^8.5.1"
   }
 }
