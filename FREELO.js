@@ -220,7 +220,10 @@ client.on('message', async (message) =>{
 //-----------------------------------------------------------------------------------------------------------
         else if(command === 'leaderboard'){
         try{
-
+        if(!message.member.roles.cache.find(r => r.name === "BOSS")){
+            return message.channel.send("You do not have perms to use this command");
+            }
+            else{
             const all = await keyv.getAll();
            
             all.sort((a, b) =>  b.value - a.value); // generic sort function that sorts high to low (so the first item is the person with the highest value)
@@ -244,6 +247,7 @@ client.on('message', async (message) =>{
                     .setTimestamp()
                     .setFooter('XAL', 'https://pbs.twimg.com/profile_images/538092927814471680/ezuUYLER_400x400.jpeg');
                     message.channel.send(printLeaderboard);
+                }
             }
         catch{
             const printErr = new Discord.MessageEmbed()
@@ -259,7 +263,36 @@ client.on('message', async (message) =>{
             console.log("Something went wrong(XAL will look into this)");
              }
 
-       }
+       }//end of leaderboard
+//---------------------------------------------------------------------------------------------------------------------
+    else if(command === "help"){// *help command
+
+        const printHelp = new Discord.MessageEmbed()
+        
+        .setColor('#0099ff')
+        .setTitle('How to use FREELO')
+        //.setURL('https://discord.js.org/')
+        .setAuthor('!help', 'https://files.cults3d.com/uploaders/15024335/illustration-file/a86d53e4-2bd9-4a8f-9550-986686c3131a/gi0mAjIh_400x400_large.png')
+        .setDescription(`Basic commands for FREELO BOT`)
+        .setThumbnail('https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Question_mark_%28black%29.svg/200px-Question_mark_%28black%29.svg.png')
+        .addFields(
+            { name: '\u200B', value: '\u200B' },
+            { name: ':robot:  BOT Commands', value: '\u200B' },
+            { name: '!add Name:StartElo', value: 'Adds member to roster with a base elo', inline: true },
+            { name: '!win Name+Elo',  value: 'Adds Elo from desired member', inline: true },
+            { name: '!Loss Name-Elo',   value: 'Subtracts Elo from desired member', inline: true },
+            { name: '\u200B', value: '\u200B' },
+            { name: '!leaderboard',  value: 'Displays all members and associated Elo from highest to lowest', inline: true },
+            { name: '!help',  value: 'uhmm. yeah, this stuff', inline: true },
+            { name: '\u200B', value: '\u200B' },
+            )
+        .setTimestamp()
+        .setFooter('Help - XAL#7777', 'https://lh5.googleusercontent.com/7j8XeYBmyh2FbnYNmr3Ktenb8iYwj1_ZmT-RBq_DpGOG0_gN2X8K26MGqjL8WxxLyznyyD4j=w1280');
+    
+        message.channel.send(printHelp);
+
+        }//end of help
+//---------------------------------------------------------------------------------------------------------------------
        else if(command === "clearAllData"){
             try{
                 message.reply("Damn... you just cleared all data")
