@@ -29,7 +29,10 @@ client.on('message', async (message) =>{
 
     if (command === 'add'){
      try{
-
+        if(!message.member.roles.cache.find(r => r.name === "ADMIN")){
+            return message.reply("You do not have permission to use this command");
+            }
+            else{
         if (!member.length) {return message.channel.send(`You didn't provide an argument, ${message.author}!`);} //If user did not provide an argument
   
     
@@ -38,7 +41,7 @@ client.on('message', async (message) =>{
 
         message.channel.send(`Successfully Added ${userName} with ${elo} Elo!`)
 
-        
+            }
       }//End of try
      catch{
          message.reply("Something went wrong(devs will look into this)");
@@ -48,6 +51,10 @@ client.on('message', async (message) =>{
 //-----------------------------------------------------------------------------------------------------------
     else if (command === 'win'){
         try{
+            if(!message.member.roles.cache.find(r => r.name === "ADMIN")){
+                return message.reply("You do not have permission to use this command");
+                }
+                else{
         let [userName, eloGained] = member.join(' ').split('+'); //Splitting argument Ex: XAL+200 = [XAL, 200]
 
         //const eloNumber = parseInt(elo, 10); //Turning the elo value from a string to an integer
@@ -125,6 +132,7 @@ client.on('message', async (message) =>{
                 }
           }
         }
+    }
         catch{
             message.reply("Something went wrong(XAL will look into this)");
             console.log("Something went wrong(XAL will look into this)");
@@ -133,6 +141,10 @@ client.on('message', async (message) =>{
 //-----------------------------------------------------------------------------------------------------------
     else if (command === 'loss'){
          try{
+            if(!message.member.roles.cache.find(r => r.name === "ADMIN")){
+                return message.reply("You do not have permission to use this command");
+                }
+                else{
                 let [userName, eloLossed] = member.join(' ').split('-'); //Splitting argument Ex: XAL+200 = [XAL, 200]
         
                 //const eloNumber = parseInt(elo, 10); //Turning the elo value from a string to an integer
@@ -212,6 +224,7 @@ client.on('message', async (message) =>{
                 }
               }
             }
+             }
             catch{
                 message.reply("Something went wrong(XAL will look into this)");
                 console.log("Something went wrong(XAL will look into this)");
@@ -219,11 +232,7 @@ client.on('message', async (message) =>{
              }//end of else if statement for "lose"
 //-----------------------------------------------------------------------------------------------------------
         else if(command === 'leaderboard'){
-        try{
-        if(!message.member.roles.cache.find(r => r.name === "BOSS")){
-            return message.channel.send("You do not have perms to use this command");
-            }
-            else{
+        try{            
             const all = await keyv.getAll();
            
             all.sort((a, b) =>  b.value - a.value); // generic sort function that sorts high to low (so the first item is the person with the highest value)
@@ -247,7 +256,7 @@ client.on('message', async (message) =>{
                     .setTimestamp()
                     .setFooter('XAL', 'https://pbs.twimg.com/profile_images/538092927814471680/ezuUYLER_400x400.jpeg');
                     message.channel.send(printLeaderboard);
-                }
+                
             }
         catch{
             const printErr = new Discord.MessageEmbed()
@@ -295,6 +304,10 @@ client.on('message', async (message) =>{
 //---------------------------------------------------------------------------------------------------------------------
        else if(command === "clearAllData"){
             try{
+                if(!message.member.roles.cache.find(r => r.name === "ADMIN")){
+                    return message.reply("You do not have permission to use this command");
+                    }
+                    else{
                 message.reply("Damn... you just cleared all data")
                 keyv.clear();
             /*    const filter = (m) => m.author.id === message.author.id;
@@ -312,6 +325,7 @@ client.on('message', async (message) =>{
                     message.reply("Good thinking")
                 }
                 */
+            }
             }
             catch{
                 message.reply("Something went wrong(XAL will look into this)");
