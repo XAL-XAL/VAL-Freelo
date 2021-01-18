@@ -289,10 +289,12 @@ client.on('message', async (message) =>{
             { name: ':robot:  BOT Commands', value: '\u200B' },
             { name: '!add Name:StartElo', value: 'Adds member to roster with a base elo', inline: true },
             { name: '!win Name+Elo',  value: 'Adds Elo from desired member', inline: true },
-            { name: '!Loss Name-Elo',   value: 'Subtracts Elo from desired member', inline: true },
+            { name: '!loss Name-Elo',   value: 'Subtracts Elo from desired member', inline: true },
             { name: '\u200B', value: '\u200B' },
             { name: '!leaderboard',  value: 'Displays all members and associated Elo from highest to lowest', inline: true },
             { name: '!help',  value: 'uhmm. yeah, this stuff', inline: true },
+            { name: '\u200B', value: '\u200B' },
+            { name: 'Example for adding a person, adding elo for wins, and subtracting elo for losses',  value: '!add daddy:100, !win daddy+35, !loss daddy-80', inline: false },
             { name: '\u200B', value: '\u200B' },
             )
         .setTimestamp()
@@ -332,7 +334,26 @@ client.on('message', async (message) =>{
                 console.log("Something went wrong(XAL will look into this)");
             }
        }
+//---------------------------------------------------------------------------------------------------------------------
+       else if(command === "clear"){
+           try{
+        const amount = member.join(' ');
 
+        if (!amount) return message.reply('You haven\'t given an amount of messages which should be deleted!'); // Checks if the `amount` parameter is given
+        if (isNaN(amount)) return message.reply('That is not a number!'); // Checks if the `amount` parameter is a number. If not, the command throws an error
+
+        if (amount > 100) return member.reply('You can`t delete more than 100 messages at once!'); // Checks if the `amount` integer is bigger than 100
+        if (amount < 1) return member.reply('You have to delete at least 1 message!'); // Checks if the `amount` integer is smaller than 1
+
+        await message.channel.messages.fetch({ limit: amount }).then(messages => { // Fetches the messages
+            message.channel.bulkDelete(messages // Bulk deletes all messages that have been fetched and are not older than 14 days (due to the Discord API)
+        )});
+       }
+       catch{
+        message.reply("Value must be greater than 0 and less than 100");
+        console.log("Something went wrong(XAL will look into this)");
+    }
+    }
 });
 
 client.login(process.env.BOT_TOKEN);
