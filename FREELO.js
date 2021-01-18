@@ -29,7 +29,7 @@ client.on('message', async (message) =>{
 
     if (command === 'add'){
      try{
-        if(!message.member.roles.cache.find(r => r.name === "ADMIN")){
+        if(!message.member.roles.cache.find(r => r.name === "Admin")){
             return message.reply("You do not have permission to use this command");
             }
             else{
@@ -51,7 +51,7 @@ client.on('message', async (message) =>{
 //-----------------------------------------------------------------------------------------------------------
     else if (command === 'win'){
         try{
-            if(!message.member.roles.cache.find(r => r.name === "ADMIN")){
+            if(!message.member.roles.cache.find(r => r.name === "Admin")){
                 return message.reply("You do not have permission to use this command");
                 }
                 else{
@@ -141,7 +141,7 @@ client.on('message', async (message) =>{
 //-----------------------------------------------------------------------------------------------------------
     else if (command === 'loss'){
          try{
-            if(!message.member.roles.cache.find(r => r.name === "ADMIN")){
+            if(!message.member.roles.cache.find(r => r.name === "Admin")){
                 return message.reply("You do not have permission to use this command");
                 }
                 else{
@@ -304,7 +304,7 @@ client.on('message', async (message) =>{
 //---------------------------------------------------------------------------------------------------------------------
        else if(command === "clearAllData"){
             try{
-                if(!message.member.roles.cache.find(r => r.name === "ADMIN")){
+                if(!message.member.roles.cache.find(r => r.name === "Admin")){
                     return message.reply("You do not have permission to use this command");
                     }
                     else{
