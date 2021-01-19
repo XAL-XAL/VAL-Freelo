@@ -263,7 +263,7 @@ client.on('message', async (message) =>{
                 .setColor('#0099ff')
                 .setTitle(`Something went wrong :frowning:`)
                 .addFields(
-                    { name: 'Please Try Again', value:'Either the leaderboard is empty or an unknown error\nNotify XAL#7777'},
+                    { name: 'Please Try Again', value:'Either the leaderboard is empty or an unknown error occurred\nNotify XAL#7777'},
                     )
                 .setTimestamp()
                 .setFooter('Help - XAL#7777', 'https://pbs.twimg.com/profile_images/538092927814471680/ezuUYLER_400x400.jpeg');
