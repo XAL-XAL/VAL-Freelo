@@ -222,8 +222,8 @@ client.on('message', async (message) =>{
                     message.channel.send(printLoss);
                     }
                 }
-              }
-            }
+              }//end of else statement for valid user entry1
+            }//end of else statement for user who has permission
              }
             catch{
                 message.reply("Something went wrong(XAL will look into this)");
@@ -263,10 +263,10 @@ client.on('message', async (message) =>{
                 .setColor('#0099ff')
                 .setTitle(`Something went wrong :frowning:`)
                 .addFields(
-                    { name: 'Please Try Again', value:'Either the leaderboard is empty or an unknown error occurred\nNotify XAL#7777'},
+                    { name: 'Please Try Again', value:'Either the leaderboard is empty or an unknown error occurred\nNotify XAL#7478'},
                     )
                 .setTimestamp()
-                .setFooter('Help - XAL#7777', 'https://pbs.twimg.com/profile_images/538092927814471680/ezuUYLER_400x400.jpeg');
+                .setFooter('Help - XAL#7478', 'https://pbs.twimg.com/profile_images/538092927814471680/ezuUYLER_400x400.jpeg');
 
                 message.channel.send(printErr);
             console.log("Something went wrong(XAL will look into this)");
@@ -298,7 +298,7 @@ client.on('message', async (message) =>{
             { name: '\u200B', value: '\u200B' },
             )
         .setTimestamp()
-        .setFooter('Help - XAL#7777', 'https://lh5.googleusercontent.com/7j8XeYBmyh2FbnYNmr3Ktenb8iYwj1_ZmT-RBq_DpGOG0_gN2X8K26MGqjL8WxxLyznyyD4j=w1280');
+        .setFooter('Help - XAL#7478', 'https://lh5.googleusercontent.com/7j8XeYBmyh2FbnYNmr3Ktenb8iYwj1_ZmT-RBq_DpGOG0_gN2X8K26MGqjL8WxxLyznyyD4j=w1280');
     
         message.channel.send(printHelp);
 
